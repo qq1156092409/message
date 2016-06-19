@@ -3,6 +3,7 @@
  * run with command 
  * php start.php start
  */
+error_reporting(7);//todo fix me
 
 ini_set('display_errors', 'on');
 use Workerman\Worker;
