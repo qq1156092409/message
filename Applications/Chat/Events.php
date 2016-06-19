@@ -36,6 +36,7 @@ class Events
    public static function onMessage($client_id, $message)
    {
         // 客户端传递的是json数据
+       echo $message."--message<br>";
         $message_data = json_decode($message, true);
         if(!$message_data)
         {
