@@ -36,7 +36,6 @@ class Events
    public static function onMessage($client_id, $message)
    {
         // 客户端传递的是json数据
-       echo $message."--message<br>";
         $message_data = json_decode($message, true);
         if(!$message_data)
         {
@@ -50,9 +49,9 @@ class Events
             case 'pong':
                 break;
             case 'init':
-                Gateway::bindUid($client_id, $message["user"]);
-                Gateway::joinGroup($client_id, $message["group"]);
-                $data=array("type"=>"init","user"=>$message["user"],"group"=>$message["group"]);
+                Gateway::bindUid($client_id, $message_data["user"]);
+                Gateway::joinGroup($client_id, $message_data["group"]);
+                $data=array("type"=>"init","user"=>$message_data["user"],"group"=>$message_data["group"]);
                 Gateway::sendToCurrentClient(json_encode($data));
                 break;
             default:break;
